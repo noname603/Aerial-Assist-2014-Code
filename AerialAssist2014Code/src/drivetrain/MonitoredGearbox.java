@@ -35,12 +35,8 @@ public class MonitoredGearbox extends Gearbox {
         return encoder.getDistance();
     }
     
-    /**
-     * FIXME
-     * @return 
-     */
     public double getAngle() {
-        return encoder.getPeriod();
+        return getDistance() / getAngularVelocity();
     }
     
     public double getVelocity() {
