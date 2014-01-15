@@ -26,15 +26,15 @@ public class MonitoredGearbox extends Gearbox {
         setEncoder(encoder);
     }
     
-    public MonitoredGearbox(SpeedController front, SpeedController mid, SpeedController rear, Encoder encoder) {
-        super(front,mid,rear);
+    public MonitoredGearbox(SpeedController front, SpeedController rear, SpeedController mid, Encoder encoder) {
+        super(front,rear,mid);
         setEncoder(encoder);
     }
     
     public double getDistance() {
         return encoder.getDistance();
     }
-    
+    //TODO: fix me. check what is the right function to call
     public double getAngle() {
         return getDistance() / getAngularVelocity();
     }

@@ -2,12 +2,15 @@ package drivetrain;
 
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.templates.Utils;
 
 /**
  *
  * @author asaf
  */
 public class Gearbox implements SpeedController {
+    
+    private double speedFactor = 1;
     
     private SpeedController frontController, rearController, midController;
     
@@ -66,6 +69,7 @@ public class Gearbox implements SpeedController {
     }
 
     public void set(double speed) {
+        speed = Utils.limitSpeed(speedFactor * speed);
         frontController.set(speed);
         rearController.set(speed);
         if (hasThreeControllers()) {
@@ -83,6 +87,16 @@ public class Gearbox implements SpeedController {
 
     public void pidWrite(double speed) {
         set(speed);
+    }
+    
+    public void setSpeedFactor(double factor) {
+        if (factor > 1) factor = 1;
+        else if (factor < 0) factor = 0;
+        this.speedFactor = factor;
+    }
+    
+    public double getSpeedFactor() {
+        return speedFactor;
     }
 
 }
