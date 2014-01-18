@@ -23,18 +23,26 @@ public class Drivetrain {
     public void straight(double speed) {
         setLeftSpeed(speed);
         setRightSpeed(speed);
-        scaleFactors(speed,speed);
+        scaleFactors(speed, speed);
     }
 
     public void rotate(double speed) {
         setLeftSpeed(speed);
         setRightSpeed(-speed);
-        scaleFactors(speed,speed);
+        scaleFactors(speed, speed);
     }
-    // TODO: FIXME
-    public void arcade(double angularSpeed, double speed) {
-        setLeftSpeed(0.5 * (speed + angularSpeed));
-        setRightSpeed(0.5 * (speed - angularSpeed));
+
+    public void arcade(double speed, double angularSpeed) {
+        double leftMotorSpeed;
+        double rightMotorSpeed;
+        if (angularSpeed > 0.0) {
+            leftMotorSpeed = -Math.max(-speed, angularSpeed);
+            rightMotorSpeed = speed + angularSpeed;
+        } else {
+            leftMotorSpeed = speed - angularSpeed;
+            rightMotorSpeed = -Math.max(-speed, -angularSpeed);
+        }
+        twoJoystickDrive(leftMotorSpeed, rightMotorSpeed);
     }
 
     public void stop() {
@@ -67,6 +75,8 @@ public class Drivetrain {
         final double NO_SCALE_SPEED = Vars.Gearbox.NO_SCALE_SPEED;
         if (Math.abs(leftSpeed()) <= NO_SCALE_SPEED || Math.abs(rightSpeed()) <= NO_SCALE_SPEED
                 || leftSpeed() == rightSpeed()) {
+            setLeftSpeedFactor(1);
+            setRightSpeedFactor(1);
         } else if (leftSpeed() > rightSpeed()) {
             setLeftSpeedFactor(rightSpeed() / leftSpeed() * wantedLeftSpeed / wantedRightSpeed);
             setRightSpeedFactor(1);

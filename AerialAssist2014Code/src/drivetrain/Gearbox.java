@@ -1,7 +1,7 @@
 package drivetrain;
 
-import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.templates.Utils;
 
 /**
@@ -20,7 +20,7 @@ public class Gearbox implements SpeedController {
      * @param rearChannel channel of the second SpeedController
      */
     public Gearbox(int frontChannel, int rearChannel) {
-        this(new Jaguar(frontChannel),new Jaguar(rearChannel));
+        this(new Talon(frontChannel),new Talon(rearChannel));
     }
     
     /**
@@ -33,7 +33,7 @@ public class Gearbox implements SpeedController {
     }
     
     public Gearbox(int frontChannel, int rearChannel, int midChannel) {
-        this(new Jaguar(frontChannel),new Jaguar(rearChannel), new Jaguar(midChannel));
+        this(new Talon(frontChannel),new Talon(rearChannel), new Talon(midChannel));
     }
     
      /**
@@ -91,7 +91,7 @@ public class Gearbox implements SpeedController {
     
     public void setSpeedFactor(double factor) {
         if (factor > 1) factor = 1;
-        else if (factor < 0) factor = 0;
+        else if (factor < -1) factor = -1;
         this.speedFactor = factor;
     }
     
