@@ -73,24 +73,24 @@ public class Drivetrain {
 
     private void scaleFactors(double wantedLeftSpeed, double wantedRightSpeed) {
         final double NO_SCALE_SPEED = Vars.Gearbox.NO_SCALE_SPEED;
-        if (Math.abs(leftSpeed()) <= NO_SCALE_SPEED || Math.abs(rightSpeed()) <= NO_SCALE_SPEED
-                || leftSpeed() == rightSpeed()) {
+        if (Math.abs(getLeftSpeed()) <= NO_SCALE_SPEED || Math.abs(getRightSpeed()) <= NO_SCALE_SPEED
+                || getLeftSpeed() == getRightSpeed()) {
             setLeftSpeedFactor(1);
             setRightSpeedFactor(1);
-        } else if (leftSpeed() > rightSpeed()) {
-            setLeftSpeedFactor(rightSpeed() / leftSpeed() * wantedLeftSpeed / wantedRightSpeed);
+        } else if (getLeftSpeed() > getRightSpeed()) {
+            setLeftSpeedFactor(getRightSpeed() / getLeftSpeed() * wantedLeftSpeed / wantedRightSpeed);
             setRightSpeedFactor(1);
         } else {
-            setRightSpeedFactor(leftSpeed() / rightSpeed() * wantedRightSpeed / wantedLeftSpeed);
+            setRightSpeedFactor(getLeftSpeed() / getRightSpeed() * wantedRightSpeed / wantedLeftSpeed);
             setLeftSpeedFactor(1);
         }
     }
 
-    public double leftSpeed() {
+    public double getLeftSpeed() {
         return leftGearbox.getVelocity();
     }
 
-    public double rightSpeed() {
+    public double getRightSpeed() {
         return rightGearbox.getVelocity();
     }
 }

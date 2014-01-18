@@ -18,4 +18,8 @@ public class Vars {
          */
         public static final double NO_SCALE_SPEED = 0.1;
     }
+    
+    public static int TICKS = 60;
+    
+    public static double WHEEL_RADIUS = 5.08; // in centimeters
 }
