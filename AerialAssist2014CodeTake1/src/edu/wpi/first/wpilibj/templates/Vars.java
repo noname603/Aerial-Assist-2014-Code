@@ -13,14 +13,14 @@ public class Vars {
     
     public class DriveTrain {
         
-        public static final int leftFrontTalonPort = 1;
-        public static final int leftRearTalonPort = 1;
+        public static final int leftFrontTalonPort = 3;
+        public static final int leftRearTalonPort = 4;
         public static final int rightFrontTalonPort = 1;
-        public static final int rightRearTalonPort = 1;
+        public static final int rightRearTalonPort = 2;
         public static final int leftEncoder1 = 1;
-        public static final int leftEncoder2 = 1;
-        public static final int rightEncoder1 = 1;
-        public static final int rightEncoder2 = 1;
+        public static final int leftEncoder2 = 2;
+        public static final int rightEncoder1 = 3;
+        public static final int rightEncoder2 = 4;
         
     }
     

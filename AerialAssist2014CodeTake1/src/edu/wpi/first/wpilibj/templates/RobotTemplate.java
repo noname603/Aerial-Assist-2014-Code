@@ -29,15 +29,15 @@ public class RobotTemplate extends IterativeRobot {
         drivetrain.twoJoystickDrive(leftJoystick.getY(), rightJoystick.getY());
         
         //arcade
-        drivetrain.arcade(leftJoystick.getY(), leftJoystick.getX());
+//        drivetrain.arcade(leftJoystick.getY(), leftJoystick.getX());
         
         //tank
-        if (leftJoystick.getTrigger()) {
-            drivetrain.rotate(leftJoystick.getX());
-        }
-        else {
-            drivetrain.straight(leftJoystick.getY());
-        }
+//        if (leftJoystick.getTrigger()) {
+//            drivetrain.rotate(leftJoystick.getX());
+//        }
+//        else {
+//            drivetrain.straight(leftJoystick.getY());
+//        }
     }
     
     public void testPeriodic() {
