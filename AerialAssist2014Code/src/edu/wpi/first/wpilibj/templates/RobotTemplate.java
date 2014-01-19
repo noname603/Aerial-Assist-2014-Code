@@ -1,50 +1,46 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) FIRST 2008. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package edu.wpi.first.wpilibj.templates;
 
-
+import drivetrain.Drivetrain;
+import drivetrain.MonitoredGearbox;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the IterativeRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the manifest file in the resource
- * directory.
- */
 public class RobotTemplate extends IterativeRobot {
-    /**
-     * This function is run when the robot is first started up and should be
-     * used for any initialization code.
-     */
-    public void robotInit() {
 
+    Drivetrain drivetrain;
+    MonitoredGearbox leftGearbox, rightGearbox;
+    Joystick leftJoystick, rightJoystick;
+
+    public void robotInit() {
+        leftGearbox = new MonitoredGearbox(Vars.DriveTrain.leftFrontTalonPort, Vars.DriveTrain.leftRearTalonPort, new Encoder(Vars.DriveTrain.leftEncoder1, Vars.DriveTrain.leftEncoder2));
+        rightGearbox = new MonitoredGearbox(Vars.DriveTrain.rightFrontTalonPort, Vars.DriveTrain.rightRearTalonPort, new Encoder(Vars.DriveTrain.rightEncoder1, Vars.DriveTrain.rightEncoder2));
+        drivetrain = new Drivetrain(leftGearbox, rightGearbox);
+        leftJoystick = new Joystick(1);
+        rightJoystick = new Joystick(2);
     }
 
-    /**
-     * This function is called periodically during autonomous
-     */
     public void autonomousPeriodic() {
 
     }
 
-    /**
-     * This function is called periodically during operator control
-     */
     public void teleopPeriodic() {
+        //double joystick
+        drivetrain.twoJoystickDrive(leftJoystick.getY(), rightJoystick.getY());
         
-    }
-    
-    /**
-     * This function is called periodically during test mode
-     */
+        //arcade
+        drivetrain.arcade(leftJoystick.getY(), leftJoystick.getX());
+        
+        //tank
+        if (leftJoystick.getTrigger()) {
+            drivetrain.rotate(leftJoystick.getX());
+        }
+        else {
+            drivetrain.straight(leftJoystick.getY());
+        }
+
     public void testPeriodic() {
-    
+
     }
-    
+
 }

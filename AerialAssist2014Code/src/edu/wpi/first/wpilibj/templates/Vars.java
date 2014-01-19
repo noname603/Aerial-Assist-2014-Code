@@ -10,12 +10,18 @@ package edu.wpi.first.wpilibj.templates;
  * @author Alon
  */
 public class Vars {
-
-    public static class Gearbox {
-
-        /**
-         * The minimum speed for allowing rescaling the speed of the robot.
-         */
-        public static final double NO_SCALE_SPEED = 0.1;
+    
+    public class DriveTrain {
+        
+        public static final int leftFrontTalonPort = 1;
+        public static final int leftRearTalonPort = 1;
+        public static final int rightFrontTalonPort = 1;
+        public static final int rightRearTalonPort = 1;
+        public static final int leftEncoder1 = 1;
+        public static final int leftEncoder2 = 1;
+        public static final int rightEncoder1 = 1;
+        public static final int rightEncoder2 = 1;
+        
     }
+    
 }
