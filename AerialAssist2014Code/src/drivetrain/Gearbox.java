@@ -89,7 +89,7 @@ public class Gearbox implements SpeedController {
         set(speed);
     }
     
-    public void setSpeedFactor(double factor) {
+    /*public void setSpeedFactor(double factor) {
         if (factor > 1) factor = 1;
         else if (factor < -1) factor = -1;
         this.speedFactor = factor;
@@ -97,6 +97,6 @@ public class Gearbox implements SpeedController {
     
     public double getSpeedFactor() {
         return speedFactor;
-    }
+    }*/
 
 }

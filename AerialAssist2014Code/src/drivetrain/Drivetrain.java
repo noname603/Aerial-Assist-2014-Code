@@ -23,13 +23,13 @@ public class Drivetrain {
     public void straight(double speed) {
         setLeftSpeed(speed);
         setRightSpeed(speed);
-        scaleFactors(speed, speed);
+//        scaleFactors(speed, speed);
     }
 
     public void rotate(double speed) {
         setLeftSpeed(speed);
         setRightSpeed(-speed);
-        scaleFactors(speed, speed);
+//        scaleFactors(speed, speed);
     }
 
     public void arcade(double speed, double angularSpeed) {
@@ -52,7 +52,7 @@ public class Drivetrain {
     public void twoJoystickDrive(double leftSpeed, double rightSpeed) {
         setLeftSpeed(leftSpeed);
         setRightSpeed(rightSpeed);
-        scaleFactors(leftSpeed, rightSpeed);
+//        scaleFactors(leftSpeed, rightSpeed);
     }
 
     public void setLeftSpeed(double speed) {
@@ -63,7 +63,7 @@ public class Drivetrain {
         rightGearbox.set(-speed);
     }
 
-    public void setLeftSpeedFactor(double factor) {
+    /*public void setLeftSpeedFactor(double factor) {
         leftGearbox.setSpeedFactor(factor);
     }
 
@@ -84,7 +84,7 @@ public class Drivetrain {
             setRightSpeedFactor(leftSpeed() / rightSpeed() * wantedRightSpeed / wantedLeftSpeed);
             setLeftSpeedFactor(1);
         }
-    }
+    }*/
 
     public double leftSpeed() {
         return leftGearbox.getVelocity();
